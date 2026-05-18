@@ -1,47 +1,647 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Curriculum Vitae</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haven Carty — Career Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f2eb;
+    --cream: #ede9df;
+    --accent: #c4622d;
+    --accent2: #2d6bc4;
+    --muted: #7a7369;
+    --line: rgba(14,14,14,0.12);
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Syne', sans-serif;
+    --mono: 'DM Mono', monospace;
+    --timeline-line: rgba(196,98,45,0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 80px 48px 64px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-kicker::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    letter-spacing: 0.05em;
+  }
+  .hero-bio {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 520px;
+    border-left: 2px solid var(--accent);
+    padding-left: 18px;
+  }
+  .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+  .skill-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 5px 12px;
+    border: 0.5px solid var(--line);
+    border-radius: 100px;
+    color: var(--muted);
+    background: var(--cream);
+    transition: all 0.2s;
+  }
+  .skill-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .skill-pill.hard {
+    background: rgba(196,98,45,0.06);
+    border-color: rgba(196,98,45,0.3);
+    color: var(--accent);
+  }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 48px;
+    max-width: 900px;
+    margin: 0 auto 64px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--line);
+  }
+  .divider-text {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* TIMELINE WRAPPER */
+  .timeline-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 120px;
+  }
+  .section-header {
+    margin-bottom: 64px;
+  }
+  .section-kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-kicker::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 54px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .section-title .hl {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* PROCESS TIMELINE (zigzag) */
+  .process-timeline {
+    position: relative;
+  }
+  .process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--timeline-line);
+    transform: translateX(-50%);
+  }
+
+  .pt-row {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+    gap: 0;
+    margin-bottom: 0;
+    align-items: center;
+    min-height: 160px;
+  }
+  .pt-card {
+    background: var(--cream);
+    border: 0.5px solid var(--line);
+    border-radius: 3px;
+    padding: 28px 30px;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .pt-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 4px 4px 0 rgba(196,98,45,0.12);
+  }
+
+  /* card on the left — arrow points right */
+  .pt-row:not(.right) .pt-card::after {
+    content: '';
+    position: absolute;
+    right: -9px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 9px solid var(--cream);
+  }
+  /* card on the right — arrow points left */
+  .pt-row.right .pt-card::after {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 9px solid var(--cream);
+  }
+
+  .pt-num-label {
+    margin-bottom: 12px;
+  }
+  .pt-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    border: 0.5px solid var(--accent);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .pt-card h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .pt-card p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .pt-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pt-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    padding: 3px 9px;
+    background: var(--paper);
+    border: 0.5px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+  .pt-node {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+  .pt-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--accent);
+    position: relative;
+    transition: transform 0.3s;
+  }
+  .pt-dot::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.3s;
+  }
+  .pt-row:hover .pt-dot {
+    transform: scale(1.3);
+  }
+  .pt-empty { }
+
+  /* CONNECTOR LINES between nodes */
+  .pt-connector {
+    grid-column: 2;
+    width: 1px;
+    background: var(--timeline-line);
+    height: 32px;
+    margin: 0 auto;
+  }
+
+  /* EDUCATION */
+  .education-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 120px;
+  }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .edu-card {
+    background: var(--cream);
+    border: 0.5px solid var(--line);
+    border-radius: 3px;
+    padding: 24px 26px;
+    position: relative;
+    transition: all 0.25s;
+  }
+  .edu-card:hover {
+    border-color: var(--accent2);
+    transform: translateY(-2px);
+  }
+  .edu-card::before {
+    content: attr(data-num);
+    font-family: var(--mono);
+    font-size: 40px;
+    font-weight: 500;
+    color: rgba(45, 107, 196, 0.08);
+    position: absolute;
+    top: 12px; right: 18px;
+    line-height: 1;
+  }
+  .edu-degree {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .edu-school {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--accent2);
+    text-transform: uppercase;
+  }
+
+  /* HOBBIES */
+  .hobbies-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 40px;
+  }
+  .hobby-item {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 8px 16px;
+    border: 0.5px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  .hobby-item:hover {
+    background: var(--cream);
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .hobby-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal.reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal.reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal.reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal.reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* LINE DRAW animation for timeline */
+  .line-draw {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    transition: stroke-dashoffset 1.8s ease;
+  }
+  .line-draw.drawn {
+    stroke-dashoffset: 0;
+  }
+
+  /* Right-side row layout */
+  .pt-row.right .pt-card { grid-column: 3; }
+  .pt-row.right .pt-node { grid-column: 2; }
+  .pt-row.right .pt-empty { grid-column: 1; }
+
+  /* year marker */
+  .pt-year {
+    position: absolute;
+    right: calc(50% + 28px);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .pt-row.right .pt-year {
+    right: auto;
+    left: calc(50% + 28px);
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 48px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    border-top: 0.5px solid var(--line);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 48px 24px 40px; }
+    .timeline-section, .education-section { padding: 0 24px 80px; }
+    .process-timeline::before { left: 20px; }
+    .pt-row {
+      grid-template-columns: 40px 1fr;
+      grid-template-rows: auto;
+    }
+    .pt-row .pt-node { grid-column: 1; grid-row: 1; align-self: start; margin-top: 28px; }
+    .pt-row .pt-card { grid-column: 2; grid-row: 1; }
+    .pt-row.right .pt-node { grid-column: 1; }
+    .pt-row.right .pt-card { grid-column: 2; }
+    .pt-row.right .pt-empty,
+    .pt-row:not(.right) .pt-empty { display: none; }
+    .pt-row .pt-card::after,
+    .pt-row.right .pt-card::after {
+      left: -9px; right: auto;
+      border-left: none;
+      border-right: 9px solid var(--cream);
+    }
+    .edu-grid { grid-template-columns: 1fr; }
+    .divider { padding: 0 24px; }
+  }
+</style>
 </head>
-<main>
-<span>
-<h1>Haven Carty</h1>
-<h2>Integrated Systems Pioneer</h2>
-<p>Working closely with the Embedded Systems team on Digital Products, Industrial Design for Products integrated with digital COMMs/ connected apps.</p>
-<h3>Skills</h3>
-<h5>Hard</h5>
-<p><table><li>Parametric and Surface Modeling</li><li>Front-end</li><li>CAD Slicing</li><li>3D Printing</li></table></p>
-<h5>Soft</h5>
-<p><table><li>Managing Expectations</li><li>Verbal and Visual Communication</li><li>Presenting Ideas</li></table></p>
-<h3>Experience</h3>
-<h4>Just Business IT</h4>
-<h5>UX Developer</h5>
-<p>Crafting custom WordPress Themes using the CMS, less, html, and some JS and PHP</p>
-<h4>Mindera</h4>
-<h5>UI Design Intern</h5>
-<p>Responsive NodeJS Web App Design</p>
-<h4>Transpose Software</h4>
-<h5>Designer</h5>
-<p>MVVM Web Applications in C Sharp, working closely with the View and ViewMode$
-<h5>Lead Industrial Designer</h5>
-$eering Samples.</p>
-<h5>SLA & FDM Technician</h5>
-<p>Managing Bambu Labs Carbon and Formlabs 3 and 3L Printers, along with washin$
-<h4>Marshall Amplification HQ</h4>
-<h5>Industrial Design Intern</h5>
-<p>Generating Technical Drawings and editting CAD files using Autodesk</p>
-<h3>Education</h3>
-<h4>BSc Product Design</h4>
-<h5>De Montfort University</h5>
-<h4>Level 4 Digital Design</h4>
-<h5>De Montfort University</h5>
-<h4>BBC UX/UI Design</h4>
-<h5>UCLan Disciples of Design</h5>
-<h4>UX Fundamentals</h4>
-<h5>Fruto Oxford</h5>
-<h4>Hobbies & Interests</h4>
-<h5><table><li>Basketball</li><li>Fashion & Runway</li><li>Longboarding</li><li>Travel</li></table><h5>
-<h3>References</h3>
-<p>Available on request</p>
-</span>
-</main>
+<body>
+
+<!-- HERO -->
+<header class="hero reveal in">
+  <div class="hero-kicker">Portfolio · CV</div>
+  <h1>Haven<br><em>Carty</em></h1>
+  <div class="hero-title">UX Executive Director &nbsp;/&nbsp; Industrial Designer &nbsp;/&nbsp; IoT Specialist</div>
+  <p class="hero-bio">Working across the intersection of digital products and physical form — bridging embedded systems with seamless connected experiences. Commonly known as IoT.</p>
+  <div class="skills-row">
+    <span class="skill-pill hard">Parametric Modeling</span>
+    <span class="skill-pill hard">Front-end Development</span>
+    <span class="skill-pill hard">CAD Slicing</span>
+    <span class="skill-pill hard">3D Printing</span>
+    <span class="skill-pill">Managing Expectations</span>
+    <span class="skill-pill">Visual Communication</span>
+    <span class="skill-pill">Presenting Ideas</span>
+  </div>
+</header>
+
+<div class="divider reveal in" style="transition-delay:0.2s">
+  <span class="divider-text">Career Experience</span>
+</div>
+
+<!-- TIMELINE SECTION -->
+<section class="timeline-section">
+  <div class="process-header section-header reveal in" style="transition-delay:0.15s">
+    <span class="section-kicker">The Journey</span>
+    <h2 class="section-title">From Intern to <span class="hl">Executive Director</span></h2>
+  </div>
+
+  <div class="process-timeline">
+
+    <!-- 01 Marshall Amplification -->
+    <div class="pt-row reveal">
+      <div class="pt-card">
+        <div class="pt-num-label"><span class="pt-num">01</span></div>
+        <h3>Marshall Amplification HQ</h3>
+        <p>Industrial Design Intern — generating technical drawings and editing CAD files using Autodesk. First hands-on exposure to product design at a globally recognised brand.</p>
+        <div class="pt-tags">
+          <span class="pt-tag">Technical Drawings</span>
+          <span class="pt-tag">Autodesk CAD</span>
+          <span class="pt-tag">Industrial Design</span>
+        </div>
+      </div>
+      <div class="pt-node"><div class="pt-dot"></div></div>
+      <div class="pt-empty"></div>
+    </div>
+
+    <!-- 02 Mindera -->
+    <div class="pt-row right reveal reveal-delay-1">
+      <div class="pt-empty"></div>
+      <div class="pt-node"><div class="pt-dot"></div></div>
+      <div class="pt-card">
+        <div class="pt-num-label"><span class="pt-num">02</span></div>
+        <h3>Mindera</h3>
+        <p>UI Design Intern — designing responsive web applications built on NodeJS. Developing a fluency in translating user needs into functional, elegant interfaces.</p>
+        <div class="pt-tags">
+          <span class="pt-tag">UI Design</span>
+          <span class="pt-tag">NodeJS</span>
+          <span class="pt-tag">Responsive Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Just Business IT -->
+    <div class="pt-row reveal reveal-delay-2">
+      <div class="pt-card">
+        <div class="pt-num-label"><span class="pt-num">03</span></div>
+        <h3>Just Business IT</h3>
+        <p>UX Developer — crafting bespoke WordPress themes using the CMS, LESS, HTML, JavaScript and PHP. Bridging design and development in a full-stack capacity.</p>
+        <div class="pt-tags">
+          <span class="pt-tag">WordPress</span>
+          <span class="pt-tag">HTML / LESS</span>
+          <span class="pt-tag">PHP &amp; JS</span>
+        </div>
+      </div>
+      <div class="pt-node"><div class="pt-dot"></div></div>
+      <div class="pt-empty"></div>
+    </div>
+
+    <!-- 04 Transpose Software -->
+    <div class="pt-row right reveal reveal-delay-1">
+      <div class="pt-empty"></div>
+      <div class="pt-node"><div class="pt-dot"></div></div>
+      <div class="pt-card">
+        <div class="pt-num-label"><span class="pt-num">04</span></div>
+        <h3>Transpose Software</h3>
+        <p>Designer → Lead Industrial Designer — shipping MVVM web applications in C# working closely with the View and ViewModel layers, while simultaneously leading hardware prototyping with SLA &amp; FDM printing.</p>
+        <div class="pt-tags">
+          <span class="pt-tag">C# / MVVM</span>
+          <span class="pt-tag">Lead ID</span>
+          <span class="pt-tag">Bambu Labs</span>
+          <span class="pt-tag">Formlabs 3 / 3L</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 UX Executive Director -->
+    <div class="pt-row reveal reveal-delay-2">
+      <div class="pt-card">
+        <div class="pt-num-label"><span class="pt-num">05</span></div>
+        <h3>UX Executive Director</h3>
+        <p>Leading the charge at the intersection of embedded systems and digital product. Driving harmonious integration between physical form and digital function across IoT-connected experiences.</p>
+        <div class="pt-tags">
+          <span class="pt-tag">IoT / Embedded Systems</span>
+          <span class="pt-tag">Digital Products</span>
+          <span class="pt-tag">Product Strategy</span>
+          <span class="pt-tag">Team Leadership</span>
+        </div>
+      </div>
+      <div class="pt-node"><div class="pt-dot"></div></div>
+      <div class="pt-empty"></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider reveal" style="transition-delay:0s">
+  <span class="divider-text">Education</span>
+</div>
+
+<!-- EDUCATION SECTION -->
+<section class="education-section">
+  <div class="section-header reveal">
+    <span class="section-kicker">Academic Background</span>
+    <h2 class="section-title">Foundations of <span class="hl">Design Thinking</span></h2>
+  </div>
+
+  <div class="edu-grid">
+    <div class="edu-card reveal" data-num="01">
+      <div class="edu-degree">BSc Product Design</div>
+      <div class="edu-school">De Montfort University</div>
+    </div>
+    <div class="edu-card reveal reveal-delay-1" data-num="02">
+      <div class="edu-degree">Level 4 Digital Design</div>
+      <div class="edu-school">De Montfort University</div>
+    </div>
+    <div class="edu-card reveal reveal-delay-2" data-num="03">
+      <div class="edu-degree">BBC UX/UI Design</div>
+      <div class="edu-school">UCLan · Disciples of Design</div>
+    </div>
+    <div class="edu-card reveal reveal-delay-3" data-num="04">
+      <div class="edu-degree">UX Fundamentals</div>
+      <div class="edu-school">Fruto Oxford</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 64px" class="reveal">
+    <span class="section-kicker">Beyond the Screen</span>
+    <h2 class="section-title" style="font-size: clamp(28px, 4vw, 40px); margin-bottom: 0">Life &amp; <span class="hl">Interests</span></h2>
+  </div>
+  <div class="hobbies-row reveal reveal-delay-1">
+    <div class="hobby-item"><span class="hobby-dot"></span>Basketball</div>
+    <div class="hobby-item"><span class="hobby-dot"></span>Fashion &amp; Runway</div>
+    <div class="hobby-item"><span class="hobby-dot"></span>Longboarding</div>
+    <div class="hobby-item"><span class="hobby-dot"></span>Travel</div>
+  </div>
+</section>
+
+<footer class="footer reveal">
+  References available on request &nbsp;·&nbsp; Haven Carty
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
 </html>
