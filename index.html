@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haven Carty — Career Timeline</title>
+<title>Career Timeline — New Business &amp; Partnerships</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -203,7 +203,6 @@
     box-shadow: 4px 4px 0 rgba(196,98,45,0.12);
   }
 
-  /* card on the left — arrow points right */
   .pt-row:not(.right) .pt-card::after {
     content: '';
     position: absolute;
@@ -215,7 +214,6 @@
     border-bottom: 8px solid transparent;
     border-left: 9px solid var(--cream);
   }
-  /* card on the right — arrow points left */
   .pt-row.right .pt-card::after {
     content: '';
     position: absolute;
@@ -245,6 +243,14 @@
     font-size: 22px;
     line-height: 1.1;
     margin-bottom: 8px;
+  }
+  .pt-card .pt-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    display: block;
   }
   .pt-card p {
     font-size: 13px;
@@ -297,16 +303,7 @@
   }
   .pt-empty { }
 
-  /* CONNECTOR LINES between nodes */
-  .pt-connector {
-    grid-column: 2;
-    width: 1px;
-    background: var(--timeline-line);
-    height: 32px;
-    margin: 0 auto;
-  }
-
-  /* EDUCATION */
+  /* EDUCATION / SKILLS GRID */
   .education-section {
     max-width: 900px;
     margin: 0 auto;
@@ -401,35 +398,10 @@
   .reveal.reveal-delay-3 { transition-delay: 0.3s; }
   .reveal.reveal-delay-4 { transition-delay: 0.4s; }
 
-  /* LINE DRAW animation for timeline */
-  .line-draw {
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-    transition: stroke-dashoffset 1.8s ease;
-  }
-  .line-draw.drawn {
-    stroke-dashoffset: 0;
-  }
-
   /* Right-side row layout */
   .pt-row.right .pt-card { grid-column: 3; }
   .pt-row.right .pt-node { grid-column: 2; }
   .pt-row.right .pt-empty { grid-column: 1; }
-
-  /* year marker */
-  .pt-year {
-    position: absolute;
-    right: calc(50% + 28px);
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .pt-row.right .pt-year {
-    right: auto;
-    left: calc(50% + 28px);
-  }
 
   /* FOOTER */
   .footer {
@@ -475,16 +447,16 @@
 <header class="hero reveal in">
   <div class="hero-kicker">Portfolio · CV</div>
   <h1>Haven<br><em>Carty</em></h1>
-  <div class="hero-title">UX Executive Director &nbsp;/&nbsp; Industrial Designer &nbsp;/&nbsp; IoT Specialist</div>
-  <p class="hero-bio">Working across the intersection of digital products and physical form — bridging embedded systems with seamless connected experiences. Commonly known as IoT.</p>
+  <div class="hero-title">New Business &amp; Partnerships &nbsp;/&nbsp; Community Development &nbsp;/&nbsp; Super Connector</div>
+  <p class="hero-bio">UX and product design background turned business development — building the relationships, communities and partnerships that get ideas past the gatekeepers and into growth. Based in Nottingham, networking across central London.</p>
   <div class="skills-row">
-    <span class="skill-pill hard">Parametric Modeling</span>
-    <span class="skill-pill hard">Front-end Development</span>
-    <span class="skill-pill hard">CAD Slicing</span>
-    <span class="skill-pill hard">3D Printing</span>
-    <span class="skill-pill">Managing Expectations</span>
-    <span class="skill-pill">Visual Communication</span>
-    <span class="skill-pill">Presenting Ideas</span>
+    <span class="skill-pill hard">New Business Development</span>
+    <span class="skill-pill hard">Partnership Structuring</span>
+    <span class="skill-pill hard">Community Building</span>
+    <span class="skill-pill hard">Lead Qualification</span>
+    <span class="skill-pill">Cold Outreach</span>
+    <span class="skill-pill">Networking</span>
+    <span class="skill-pill">Customer-First Thinking</span>
   </div>
 </header>
 
@@ -496,95 +468,155 @@
 <section class="timeline-section">
   <div class="process-header section-header reveal in" style="transition-delay:0.15s">
     <span class="section-kicker">The Journey</span>
-    <h2 class="section-title">From Intern to <span class="hl">Executive Director</span></h2>
+    <h2 class="section-title">From Intern to <span class="hl">New Business Executive</span></h2>
   </div>
 
   <div class="process-timeline">
 
-    <!-- 01 Marshall Amplification -->
+    <!-- 01 UX Apprenticeship -->
     <div class="pt-row reveal">
       <div class="pt-card">
         <div class="pt-num-label"><span class="pt-num">01</span></div>
-        <h3>Marshall Amplification HQ</h3>
-        <p>Industrial Design Intern — generating technical drawings and editing CAD files using Autodesk. First hands-on exposure to product design at a globally recognised brand.</p>
+        <span class="pt-meta">2017</span>
+        <h3>UX Apprenticeship</h3>
+        <p>Started an apprenticeship in user experience and product design — the foundation for a customer-first way of thinking that carries through every role since.</p>
         <div class="pt-tags">
-          <span class="pt-tag">Technical Drawings</span>
-          <span class="pt-tag">Autodesk CAD</span>
-          <span class="pt-tag">Industrial Design</span>
+          <span class="pt-tag">UX Fundamentals</span>
+          <span class="pt-tag">Product Design</span>
         </div>
       </div>
       <div class="pt-node"><div class="pt-dot"></div></div>
       <div class="pt-empty"></div>
     </div>
 
-    <!-- 02 Mindera -->
+    <!-- 02 Transpose Software -->
     <div class="pt-row right reveal reveal-delay-1">
       <div class="pt-empty"></div>
       <div class="pt-node"><div class="pt-dot"></div></div>
       <div class="pt-card">
         <div class="pt-num-label"><span class="pt-num">02</span></div>
-        <h3>Mindera</h3>
-        <p>UI Design Intern — designing responsive web applications built on NodeJS. Developing a fluency in translating user needs into functional, elegant interfaces.</p>
+        <span class="pt-meta">2018 —</span>
+        <h3>Transpose Software</h3>
+        <p>Joined as an Intern, working on the Marshall Amplification account. Took the initiative to visit Marshall's manufacturer in Ho Chi Minh City, Vietnam — closing the feedback loop between design contractors in Leicester and the production line.</p>
         <div class="pt-tags">
-          <span class="pt-tag">UI Design</span>
-          <span class="pt-tag">NodeJS</span>
-          <span class="pt-tag">Responsive Design</span>
+          <span class="pt-tag">Marshall Amplification</span>
+          <span class="pt-tag">Manufacturer Relations</span>
+          <span class="pt-tag">Cross-team Feedback</span>
         </div>
       </div>
     </div>
 
-    <!-- 03 Just Business IT -->
+    <!-- 03 The Hedge Fund TM -->
     <div class="pt-row reveal reveal-delay-2">
       <div class="pt-card">
         <div class="pt-num-label"><span class="pt-num">03</span></div>
-        <h3>Just Business IT</h3>
-        <p>UX Developer — crafting bespoke WordPress themes using the CMS, LESS, HTML, JavaScript and PHP. Bridging design and development in a full-stack capacity.</p>
+        <span class="pt-meta">2025</span>
+        <h3>The Hedge Fund TM</h3>
+        <p>Took a vibe-coded Equities &amp; Commodities sentiment product and built an audience for it — shifting from product to sales. Built a Discord community and hosted weekly in-person trading meetups in Nottingham, growing attendance from 6 to 12 over four months, run on EnThriven.</p>
         <div class="pt-tags">
-          <span class="pt-tag">WordPress</span>
-          <span class="pt-tag">HTML / LESS</span>
-          <span class="pt-tag">PHP &amp; JS</span>
+          <span class="pt-tag">Community Building</span>
+          <span class="pt-tag">Discord</span>
+          <span class="pt-tag">EnThriven</span>
         </div>
       </div>
       <div class="pt-node"><div class="pt-dot"></div></div>
       <div class="pt-empty"></div>
     </div>
 
-    <!-- 04 Transpose Software -->
+    <!-- 04 FlyWheel -->
     <div class="pt-row right reveal reveal-delay-1">
       <div class="pt-empty"></div>
       <div class="pt-node"><div class="pt-dot"></div></div>
       <div class="pt-card">
         <div class="pt-num-label"><span class="pt-num">04</span></div>
-        <h3>Transpose Software</h3>
-        <p>Designer → Lead Industrial Designer — shipping MVVM web applications in C# working closely with the View and ViewModel layers, while simultaneously leading hardware prototyping with SLA &amp; FDM printing.</p>
+        <span class="pt-meta">2026</span>
+        <h3>FlyWheel</h3>
+        <p>Began qualifying leads for the AI startup, making 100+ indirect sales calls from a self-built database, warming prospects on LinkedIn, and cold-approaching media companies around Old Street. Connected FlyWheel with opportunities close to their ICP and shadowed onboarding.</p>
         <div class="pt-tags">
-          <span class="pt-tag">C# / MVVM</span>
-          <span class="pt-tag">Lead ID</span>
-          <span class="pt-tag">Bambu Labs</span>
-          <span class="pt-tag">Formlabs 3 / 3L</span>
+          <span class="pt-tag">Lead Qualification</span>
+          <span class="pt-tag">Outbound Sales</span>
+          <span class="pt-tag">FlyWheelOS</span>
         </div>
       </div>
     </div>
 
-    <!-- 05 UX Executive Director -->
+    <!-- 05 Media Mace & Common Sense -->
     <div class="pt-row reveal reveal-delay-2">
       <div class="pt-card">
         <div class="pt-num-label"><span class="pt-num">05</span></div>
-        <h3>UX Executive Director</h3>
-        <p>Leading the charge at the intersection of embedded systems and digital product. Driving harmonious integration between physical form and digital function across IoT-connected experiences.</p>
+        <span class="pt-meta">2026 — Present</span>
+        <h3>Media Mace &amp; Common Sense</h3>
+        <p>Built the relationship with Common Sense Studios and Media Mace in Nottingham. Pitched a New Business partnership representing both brands — bringing in high-value talent, managing existing accounts, and drafting proposals for a 12-month contract, with a vision to franchise the Common Sense Network across London and the Midlands.</p>
         <div class="pt-tags">
-          <span class="pt-tag">IoT / Embedded Systems</span>
-          <span class="pt-tag">Digital Products</span>
-          <span class="pt-tag">Product Strategy</span>
-          <span class="pt-tag">Team Leadership</span>
+          <span class="pt-tag">Partnership Structuring</span>
+          <span class="pt-tag">Account Management</span>
+          <span class="pt-tag">Brand Franchising</span>
         </div>
       </div>
       <div class="pt-node"><div class="pt-dot"></div></div>
       <div class="pt-empty"></div>
     </div>
 
+    <!-- 06 New Business & Partnerships Executive -->
+    <div class="pt-row right reveal reveal-delay-1">
+      <div class="pt-empty"></div>
+      <div class="pt-node"><div class="pt-dot"></div></div>
+      <div class="pt-card">
+        <div class="pt-num-label"><span class="pt-num">06</span></div>
+        <span class="pt-meta">Now</span>
+        <h3>New Business &amp; Partnerships Executive</h3>
+        <p>Operating as a super connector across media, startups and studios — driving the £100,000/month advertising conversation between Elonex (Dizzee Rascal's media team) and AdMyScreen for Elonex's Manchester LED display, alongside the Common Sense franchise vision. "Don't be a shooting star, build a constellation."</p>
+        <div class="pt-tags">
+          <span class="pt-tag">Deal Structuring</span>
+          <span class="pt-tag">Executive Relationships</span>
+          <span class="pt-tag">Vision &amp; Strategy</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<!--<div class="divider reveal" style="transition-delay:0s">
+  <span class="divider-text">Toolkit</span>
+</div>
+
+<section class="education-section">
+  <div class="section-header reveal">
+    <span class="section-kicker">Working Toolkit</span>
+    <h2 class="section-title">Tools of the <span class="hl">Trade</span></h2>
+  </div>
+
+  <div class="edu-grid">
+    <div class="edu-card reveal" data-num="01">
+      <div class="edu-degree">Adobe Creative Cloud</div>
+      <div class="edu-school">Content &amp; Design</div>
+    </div>
+    <div class="edu-card reveal reveal-delay-1" data-num="02">
+      <div class="edu-degree">Final Cut &amp; DaVinci Resolve</div>
+      <div class="edu-school">Video Production</div>
+    </div>
+    <div class="edu-card reveal reveal-delay-2" data-num="03">
+      <div class="edu-degree">EnThriven</div>
+      <div class="edu-school">Scheduling · Analytics · Community</div>
+    </div>
+    <div class="edu-card reveal reveal-delay-3" data-num="04">
+      <div class="edu-degree">FlyWheelOS</div>
+      <div class="edu-school">Content Ideation</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 64px" class="reveal">
+    <span class="section-kicker">Beyond the Deal</span>
+    <h2 class="section-title" style="font-size: clamp(28px, 4vw, 40px); margin-bottom: 0">Life &amp; <span class="hl">Interests</span></h2>
+  </div>
+  <div class="hobbies-row reveal reveal-delay-1">
+    <div class="hobby-item"><span class="hobby-dot"></span>Podcasting &amp; Media Club</div>
+    <div class="hobby-item"><span class="hobby-dot"></span>Day Trading Community</div>
+    <div class="hobby-item"><span class="hobby-dot"></span>Student Mentoring Society</div>
+    <div class="hobby-item"><span class="hobby-dot"></span>Networking &amp; Events</div>
+  </div>
+</section>-->
 
 <div class="divider reveal" style="transition-delay:0s">
   <span class="divider-text">Education</span>
@@ -629,7 +661,7 @@
 </section>
 
 <footer class="footer reveal">
-  References available on request &nbsp;·&nbsp; Haven Carty
+  References available on request
 </footer>
 
 <script>
